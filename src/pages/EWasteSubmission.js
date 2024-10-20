@@ -1,9 +1,7 @@
-// EWasteSubmission.js
-
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import EWasteCard from './EWasteCard'; // Import the card component
-import './EWasteSubmission.css'; // Create a CSS file for styling
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
+import EWasteCard from './EWasteCard'; 
+import './EWasteSubmission.css'; 
 
 const ewasteItems = [
   { id: 1, name: 'Old Computers', description: 'Desktops, laptops, and other computing devices.' },
@@ -24,13 +22,29 @@ function EWasteSubmission() {
   const { userId } = useParams();
   const [selectedItems, setSelectedItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate(); // Use navigate to programmatically change routes
 
   const handleSelectItem = (item) => {
-    if (!selectedItems.includes(item)) {
-      setSelectedItems([...selectedItems, item]);
-    } else {
-      // Remove the item if already selected
-      setSelectedItems(selectedItems.filter(i => i !== item));
+    switch (item.name) {
+      case 'Old Computers':
+        navigate(`/old-computers`);
+        break;
+      case 'Mobile Phones':
+        navigate(`/mobile-phones`);
+        break;
+      case 'Televisions':
+        navigate(`/televisions`);
+        break;
+      case 'Batteries':
+        navigate(`/batteries`);
+        break;
+      default:
+        // Handle other item selections
+        if (!selectedItems.includes(item)) {
+          setSelectedItems([...selectedItems, item]);
+        } else {
+          setSelectedItems(selectedItems.filter(i => i !== item));
+        }
     }
   };
 
@@ -39,9 +53,8 @@ function EWasteSubmission() {
   };
 
   const handleSubmit = () => {
-    // Handle the submission of selected items
     console.log('Submitting items:', selectedItems);
-    // You can implement the API call here to submit the items
+    // API call to submit selected items could go here
   };
 
   return (
@@ -65,7 +78,7 @@ function EWasteSubmission() {
               key={item.id}
               item={item}
               onSelect={handleSelectItem}
-              isHighlighted={selectedItems.includes(item)} // Highlight if selected
+              isHighlighted={selectedItems.includes(item)}
             />
           ))}
       </div>

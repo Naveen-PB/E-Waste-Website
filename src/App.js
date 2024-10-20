@@ -10,7 +10,12 @@ import AnnouncementBar from './components/AnnouncementBar';
 import LoginSignup from './components/LoginSignup';
 import Dashboard from './pages/Dashboard';
 import EWasteSubmission from './pages/EWasteSubmission';
+import OldComputersPage from './pages/OldComputersPage';
+import MobilePhonesPage from './pages/MobilePhonesPage'; // Import new components
+import TelevisionsPage from './pages/TelevisionsPage'; 
+import BatteriesPage from './pages/BatteriesPage'; 
 import './App.css';
+import History from './pages/History';
 
 function App() {
   return (
@@ -27,6 +32,11 @@ function App() {
           <Route path="/login" element={<LoginSignup />} /> {/* New login route */}
           <Route path="/dashboard/:userId" element={<Dashboard />} />
           <Route path="/ewaste/submission/:userId" element={<EWasteSubmission />} />
+          <Route path="/old-computers" element={<OldComputersPage />} />
+          <Route path="/mobile-phones" element={<MobilePhonesPage />} /> {/* Add new route */}
+          <Route path="/televisions" element={<TelevisionsPage />} /> {/* Add new route */}
+          <Route path="/batteries" element={<BatteriesPage />} /> {/* Add new route */}
+          <Route path="/history/:userId" element={<History />} /> {/* History component route */}
         </Routes>
       </div>
     </Router>
