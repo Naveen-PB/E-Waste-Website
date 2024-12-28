@@ -14,8 +14,10 @@ import OldComputersPage from './pages/OldComputersPage';
 import MobilePhonesPage from './pages/MobilePhonesPage'; // Import new components
 import TelevisionsPage from './pages/TelevisionsPage'; 
 import BatteriesPage from './pages/BatteriesPage'; 
+import Recycle_dashboard from './components/Recycle_dashboard'; // Import Recycle_dashboard
 import './App.css';
 import History from './pages/History';
+import Products from './components/Products'; // Import the new component
 
 function App() {
   return (
@@ -37,6 +39,9 @@ function App() {
           <Route path="/televisions" element={<TelevisionsPage />} /> {/* Add new route */}
           <Route path="/batteries" element={<BatteriesPage />} /> {/* Add new route */}
           <Route path="/history/:userId" element={<History />} /> {/* History component route */}
+          <Route path="/recycle-dashboard" element={<Recycle_dashboard />} /> {/* Add route for Recycle_dashboard */}
+          <Route path="/products" element={<Products />} /> 
+          
         </Routes>
       </div>
     </Router>

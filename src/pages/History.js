@@ -11,7 +11,7 @@ function History() {
   useEffect(() => {
     const fetchComputers = async () => {
       try {
-        const response = await fetch('http://localhost:5000/computers');
+        const response = await fetch('http://localhost:5001/computers');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

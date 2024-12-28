@@ -14,6 +14,7 @@ function OldComputersPage() {
     pickupAddress: '',
     contactNumber: '',
     recyclingPreference: '',
+    priceEstimation: '', // New field for price estimation
   });
 
   const handleChange = (e) => {
@@ -22,7 +23,7 @@ function OldComputersPage() {
       if (name === 'accessories') {
         const updatedAccessories = checked
           ? [...formData.accessories, value]
-          : formData.accessories.filter(item => item !== value);
+          : formData.accessories.filter((item) => item !== value);
         setFormData({ ...formData, accessories: updatedAccessories });
       } else {
         setFormData({ ...formData, [name]: checked });
@@ -35,7 +36,10 @@ function OldComputersPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/submit-computer', formData);
+      const response = await axios.post(
+        'http://localhost:5001/submit-computer',
+        formData
+      );
       console.log('Form Data Submitted:', response.data);
       alert('Data submitted successfully!');
     } catch (error) {
@@ -216,6 +220,19 @@ function OldComputersPage() {
             <option value="recycle">Recycle</option>
             <option value="resell">Resell</option>
           </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="priceEstimation">Price Estimation:</label>
+          <input
+            type="number"
+            id="priceEstimation"
+            name="priceEstimation"
+            value={formData.priceEstimation}
+            onChange={handleChange}
+            placeholder="Enter estimated price"
+            required
+          />
         </div>
 
         <button type="submit">Submit</button>
