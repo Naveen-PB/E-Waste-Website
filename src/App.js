@@ -18,6 +18,7 @@ import Recycle_dashboard from './components/Recycle_dashboard'; // Import Recycl
 import './App.css';
 import History from './pages/History';
 import Products from './components/Products'; // Import the new component
+import AcceptPage from './components/AcceptPage';
 
 function App() {
   return (
@@ -40,7 +41,8 @@ function App() {
           <Route path="/batteries" element={<BatteriesPage />} /> {/* Add new route */}
           <Route path="/history/:userId" element={<History />} /> {/* History component route */}
           <Route path="/recycle-dashboard" element={<Recycle_dashboard />} /> {/* Add route for Recycle_dashboard */}
-          <Route path="/products" element={<Products />} /> 
+          <Route path="/products" element={<Products />} />
+          <Route path="/accept/:id" element={<AcceptPage />} />  
           
         </Routes>
       </div>

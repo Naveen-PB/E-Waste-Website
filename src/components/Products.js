@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Products.css';
+
 function Products() {
   const [computers, setComputers] = useState([]);
+  const navigate = useNavigate(); // Use navigate hook
 
-  // Fetch computer data from the backend
   useEffect(() => {
     const fetchComputers = async () => {
       try {
@@ -22,10 +24,8 @@ function Products() {
     fetchComputers();
   }, []);
 
-  // Handle accept button click
   const handleAccept = (id) => {
-    console.log(`Accepted computer with ID: ${id}`);
-    // Additional logic for handling accept action can be added here
+    navigate(`/accept/${id}`); // Navigate to the AcceptPage
   };
 
   return (
@@ -54,3 +54,4 @@ function Products() {
 }
 
 export default Products;
+  
